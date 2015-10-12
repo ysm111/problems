@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define NUM_List 10 //リストの要素数
+
 /*リストの要素*/
 struct node{
     int value; //値
@@ -11,10 +13,10 @@ struct node *top; //リストの先頭へのポインタ
 /*値vを持つ要素をリストに追加する(実際に追加を行う)*/
 void add_(int v, struct node **n)
 {
-    if(*n==NULL || (*n)->value<v){
+    if(*n==NULL || (*n)->value<v){ //nの指している先のあたりに値vを持つ要素を追加するとき
         struct node *p; //値vを持つ要素の次に来る(予定)の要素へのポインタ
 
-        if(*n==NULL){
+        if(*n==NULL){ //nの指している先のポインタが何も指していない
             p=NULL;
         }else if(*n==top){
             p=*n;
@@ -56,8 +58,8 @@ void show()
 int main()
 {
     //リストの初期値を入力
-    std::cout<<"List[10]="<<std::endl;
-    for (int i = 0; i < 10; ++i) {
+    std::cout<<"List["<<NUM_List<<"]="<<std::endl;
+    for (int i = 0; i < NUM_List; ++i) {
         int tmp;
 
         std::cin>>tmp;
@@ -71,7 +73,7 @@ int main()
     add(input);
 
     //リストを表示
-    std::cout<<"List[11]="<<std::endl;
+    std::cout<<"List["<<NUM_List+1<<"]="<<std::endl;
     show();
     return 0;
 }

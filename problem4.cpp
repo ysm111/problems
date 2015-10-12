@@ -7,13 +7,13 @@ int main()
     int a[MAX_N][MAX_N]; //行列A
     int b[MAX_N][MAX_N]; //行列B
     int c[MAX_N][MAX_N]; //行列C
-    int n=0;
+    int n;
 
-    //nの入力(1<=n<=100を満たすまで繰り返す)
-    while(n<1 || 100<n) {
+    //nの入力(1<=n<=MAX_Nを満たすまで繰り返す)
+    do{
         std::cout << "n=";
         std::cin >> n;
-    }
+    }while(n<1 || MAX_N<n);
     //行列Aの入力
     std::cout<<"A="<<std::endl;
     for (int i = 0; i < n; ++i) {
