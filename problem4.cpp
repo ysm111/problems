@@ -15,14 +15,14 @@ int main()
         std::cin >> n;
     }while(n<1 || MAX_N<n);
     //行列Aの入力
-    std::cout<<"A="<<std::endl;
+    std::cout<<"A = "<<std::endl;
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             std::cin>>a[i][j];
         }
     }
     //行列Bの入力
-    std::cout<<"B="<<std::endl;
+    std::cout<<"B = "<<std::endl;
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             std::cin>>b[i][j];
@@ -38,7 +38,7 @@ int main()
         }
     }
     //行列Cを出力
-    std::cout<<"C="<<std::endl;
+    std::cout<<"C = "<<std::endl;
     for (int l = 0; l < n; ++l) {
         for (int i = 0; i < n; ++i) {
             std::cout<<c[l][i]<<" ";
