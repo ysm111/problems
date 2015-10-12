@@ -56,7 +56,7 @@ void show()
     std::cout<<std::endl;
 }
 
-/*リストのメモリ領域を開放*/
+/*リストのメモリ領域を開放(実際に開放を行う)*/
 void myFree_(struct node **n)
 {
     if((*n)->next!=NULL){
