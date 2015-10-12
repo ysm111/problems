@@ -58,7 +58,7 @@ void show()
 int main()
 {
     //リストの初期値を入力
-    std::cout<<"List["<<NUM_List<<"]="<<std::endl;
+    std::cout<<"List["<<NUM_List<<"]=";
     for (int i = 0; i < NUM_List; ++i) {
         int tmp;
 
@@ -67,13 +67,13 @@ int main()
     }
 
     //追加データを入力
-    std::cout<<"Add Data="<<std::endl;
+    std::cout<<"Add Data=";
     int input;
     std::cin >> input;
     add(input);
 
     //リストを表示
-    std::cout<<"List["<<NUM_List+1<<"]="<<std::endl;
+    std::cout<<"List["<<NUM_List+1<<"]=";
     show();
     return 0;
 }
