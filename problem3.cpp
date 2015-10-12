@@ -13,7 +13,7 @@ struct node *top; //リストの先頭へのポインタ
 /*値vを持つ要素をリストに追加する(実際に追加を行う)*/
 void add_(int v, struct node **n)
 {
-    if(*n==NULL || (*n)->value<v){ //nの指している先のあたりに値vを持つ要素を追加するとき
+    if(*n==NULL || (*n==top && (*n)->value<v) || (*n)->next->value<v){ //nの指している先のあたりに値vを持つ要素を追加するとき
         struct node *p; //値vを持つ要素の次に来る(予定)の要素へのポインタ
 
         if(*n==NULL){ //nの指している先のポインタが何も指していないとき
@@ -25,7 +25,7 @@ void add_(int v, struct node **n)
             n=&((*n)->next);
         }
         //値vを持つ要素をリストに追加
-        *n=(struct node *)calloc(1,sizeof(struct node));
+        *n=(struct node *)malloc(sizeof(struct node));
         (*n)->value=v;
         (*n)->next=p;
     }else{
@@ -56,6 +56,22 @@ void show()
     std::cout<<std::endl;
 }
 
+/*リストのメモリ領域を開放*/
+struct node *myfree_(struct node *n)
+{
+    if(n!=NULL){
+        free(myfree_(n->next));
+    }
+    return n;
+}
+
+/*リストのメモリ領域を開放*/
+void myfree()
+{
+    myfree_(top);
+    free(top);
+}
+
 int main()
 {
     //リストの初期値を入力
@@ -76,5 +92,8 @@ int main()
     //リストを表示
     std::cout<<"List["<<NUM_List+1<<"] = ";
     show();
+
+    //リストのメモリ領域を開放
+    myfree();
     return 0;
 }
