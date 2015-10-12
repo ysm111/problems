@@ -8,11 +8,11 @@ struct node{
 
 struct node *top; //リストの先頭へのポインタ
 
-/*値valueを持つ要素をリストに追加する(実際に追加を行う)*/
+/*値vを持つ要素をリストに追加する(実際に追加を行う)*/
 void add_(int v, struct node **n)
 {
     if(*n==NULL || (*n)->value<v){
-        struct node *p;
+        struct node *p; //値vを持つ要素の次に来る(予定)の要素へのポインタ
 
         if(*n==NULL){
             p=NULL;
@@ -30,7 +30,7 @@ void add_(int v, struct node **n)
     }
 }
 
-/*値valueを持つ要素をリストに追加する*/
+/*値vを持つ要素をリストに追加する*/
 void add(int v)
 {
     add_(v,&top);
