@@ -16,14 +16,15 @@ void add_(int v, struct node **n)
     if(*n==NULL || (*n)->value<v){ //nの指している先のあたりに値vを持つ要素を追加するとき
         struct node *p; //値vを持つ要素の次に来る(予定)の要素へのポインタ
 
-        if(*n==NULL){ //nの指している先のポインタが何も指していない
+        if(*n==NULL){ //nの指している先のポインタが何も指していないとき
             p=NULL;
-        }else if(*n==top){
+        }else if(*n==top){ //nの指している先のポインタがリストの先頭を指しているとき
             p=*n;
-        } else{
+        } else{ //nの指している先のポインタがリストの途中を指しているとき
             p=(*n)->next;
             n=&((*n)->next);
         }
+        //値vを持つ要素をリストに追加
         *n=(struct node *)calloc(1,sizeof(struct node));
         (*n)->value=v;
         (*n)->next=p;
