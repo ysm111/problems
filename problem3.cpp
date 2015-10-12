@@ -2,6 +2,12 @@
 
 #define NUM_List 10 //リストの要素数
 
+/*値vを持つ要素をリストに追加する*/
+#define add(v) add_(v,&top)
+
+/*リストのメモリ領域を開放*/
+#define myFree() myFree_(&top)
+
 /*リストの要素*/
 struct node{
     int value; //値
@@ -33,12 +39,6 @@ void add_(int v, struct node **n)
     }
 }
 
-/*値vを持つ要素をリストに追加する*/
-void add(int v)
-{
-    add_(v,&top);
-}
-
 /*リストの内容を表示する(実際に表示を行う)*/
 void show_(struct node *n)
 {
@@ -57,19 +57,13 @@ void show()
 }
 
 /*リストのメモリ領域を開放*/
-struct node *myfree_(struct node *n)
+void myFree_(struct node **n)
 {
-    if(n!=NULL){
-        free(myfree_(n->next));
+    if((*n)->next!=NULL){
+        myFree_(&((*n)->next));
     }
-    return n;
-}
-
-/*リストのメモリ領域を開放*/
-void myfree()
-{
-    myfree_(top);
-    free(top);
+    free(*n);
+    *n=NULL;
 }
 
 int main()
@@ -94,6 +88,6 @@ int main()
     show();
 
     //リストのメモリ領域を開放
-    myfree();
+    myFree();
     return 0;
 }
