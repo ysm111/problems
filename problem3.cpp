@@ -18,7 +18,7 @@ void add_(int v, struct node **n)
 
         if(*n==NULL){ //nの指している先のポインタが何も指していないとき
             p=NULL;
-        }else if(*n==top){ //nの指している先のポインタがリストの先頭を指しているとき
+        }else if(*n==top && (*n)->value<v){ //nの指している先のポインタがリストの先頭を指しているとき
             p=*n;
         } else{ //nの指している先のポインタがリストの途中を指しているとき
             p=(*n)->next;
