@@ -13,7 +13,7 @@ struct node *top; //リストの先頭へのポインタ
 /*値vを持つ要素をリストに追加する(実際に追加を行う)*/
 void add_(int v, struct node **n)
 {
-    if(*n==NULL || (*n==top && (*n)->value<v) || (*n)->next->value<v){ //nの指している先のあたりに値vを持つ要素を追加するとき
+    if(*n==NULL || (*n==top && (*n)->value<v) || ((*n)->next!=NULL && (*n)->next->value<v)){ //nの指している先のあたりに値vを持つ要素を追加するとき
         struct node *p; //値vを持つ要素の次に来る(予定)の要素へのポインタ
 
         if(*n==NULL){ //nの指している先のポインタが何も指していないとき
