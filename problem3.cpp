@@ -8,6 +8,9 @@
 /*リストのメモリ領域を開放*/
 #define myFree() myFree_(&top)
 
+/*リストの内容を表示する*/
+#define show() show_(top);
+
 /*リストの要素*/
 struct node{
     int value; //値
@@ -42,18 +45,12 @@ void add_(int v, struct node **n)
 /*リストの内容を表示する(実際に表示を行う)*/
 void show_(struct node *n)
 {
-    //末尾でないとき
     if(n!=NULL) {
         std::cout << n->value << " ";
         show_(n->next);
+    }else{
+        std::cout<<std::endl;
     }
-}
-
-/*リストの内容を表示する*/
-void show()
-{
-    show_(top);
-    std::cout<<std::endl;
 }
 
 /*リストのメモリ領域を開放(実際に開放を行う)*/
